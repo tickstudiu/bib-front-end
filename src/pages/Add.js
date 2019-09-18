@@ -1,6 +1,9 @@
 import React from 'react';
-import { Container, Row, Col, Button } from 'reactstrap';
 import axios from "axios";
+
+import { Container, Row, Col, Button } from 'reactstrap';
+
+import { RootUrl } from "../config";
 
 import Spinner from '../components/spinner.component';
 import Table from '../components/table.component';
@@ -20,13 +23,13 @@ export default class Add extends React.Component {
     }
 
     getBib = () => {
-        axios.get(`http://localhost:5000/bibs/${this.props.match.params.id}`)
+        axios.get(`${RootUrl}/bibs/${this.props.match.params.id}`)
             .then(res => {
                 const bib = res.data;
                 this.setState({ bib });
             });
 
-        axios.get(`http://localhost:5000/bibsData/`)
+        axios.get(`${RootUrl}/bibsData/`)
             .then(res => {
                 const bibsData = res.data;
                 this.setState({ bibsData });
@@ -55,7 +58,7 @@ export default class Add extends React.Component {
             tag: this.state.tag,
         };
 
-        axios.post(`http://localhost:5000/bibsData/add`, newBib)
+        axios.post(`${RootUrl}/bibsData/add`, newBib)
             .then(() => {
                 this.setState({ isSending: false });
                 this.clearTag();

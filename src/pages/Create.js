@@ -1,6 +1,9 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText, Container } from 'reactstrap';
 import axios from "axios";
+
+import { Button, Form, FormGroup, Label, Input, FormText, Container } from 'reactstrap';
+
+import { RootUrl } from "../config";
 export default class Create extends React.Component {
 
     state = {
@@ -17,7 +20,7 @@ export default class Create extends React.Component {
     }
 
     getBib = () => {
-        axios.get(`http://localhost:5000/bibs`)
+        axios.get(`${RootUrl}/bibs`)
             .then(res => {
                 const bibs = res.data;
                 this.setState({ bibs });
@@ -44,7 +47,7 @@ export default class Create extends React.Component {
             checkpoint: this.state.checkpoint
         };
 
-        axios.post(`http://localhost:5000/bibs/add`, newBib)
+        axios.post(`${RootUrl}/bibs/add`, newBib)
             .then(() => {this.setState({ loading: false });})
     };
 

@@ -3,6 +3,8 @@ import axios from 'axios';
 
 import { Container, Row, Col } from 'reactstrap';
 
+import { RootUrl } from "../config";
+
 import Card from '../components/card.component';
 import CardWithImage from '../components/cardWithImage.component';
 import Spinner from '../components/spinner.component';
@@ -18,7 +20,7 @@ export default class App extends React.Component {
     }
 
     getBib = () => {
-        axios.get(`http://localhost:5000/bibs`)
+        axios.get(`${RootUrl}/bibs`)
             .then(res => {
                 const bibs = res.data;
                 this.setState({ bibs });
@@ -27,7 +29,7 @@ export default class App extends React.Component {
     };
 
     deleteBib = (id) => {
-        axios.delete(`http://localhost:5000/bibs/${id}`)
+        axios.delete(`${RootUrl}/bibs/${id}`)
             .then(res => {
                 console.log(res.data);
                 window.location.reload();
