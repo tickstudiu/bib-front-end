@@ -1,0 +1,15 @@
+.hover-shadow{
+    transition: all 0.5s;
+}
+
+.hover-shadow:hover{
+    box-shadow: 4px 7px #000000;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.bg-light-dark{
+    background: #eaeaea;
+}
