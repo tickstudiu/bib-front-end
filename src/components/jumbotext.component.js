@@ -9,9 +9,7 @@ class JumboText extends Component {
                     <Container>
                         <h1 className="display-4 text-uppercase">Develop for the event</h1>
                         <hr className="my-2"/>
-                        <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling
-                            extra attention to featured content or information.It uses utility classes for typography and spacing to space content out within the larger
-                            container.</p>
+                        <p className="lead">For use in collecting running statistics, which will collect 2 types of data: BIB and time</p>
                     </Container>
                 </Jumbotron>
             </div>
