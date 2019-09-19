@@ -19,7 +19,7 @@ class App extends React.Component {
     componentDidMount() {
         this.props.fetchBib(() => {
             this.setState({
-                bibs: this.props.bibStore.bibs,
+                bibs: this.props.bibStore.bibs.reverse(),
                 loading: false
             })
         });

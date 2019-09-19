@@ -75,7 +75,7 @@ class Add extends React.Component {
                                     </ul>
                                 </div>
                         }
-                        <Table bibsData={this.state.bibsData} id={this.state.bib.id}/>
+                        <Table bibsData={this.state.bibsData} id={this.state.bib._id}/>
                     </Col>
                     <Col lg={6} md={12}>
                         <header className="d-flex justify-content-between align-items-center">
