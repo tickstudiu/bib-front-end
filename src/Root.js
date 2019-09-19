@@ -1,4 +1,7 @@
 import React from 'react';
+import {createStore,applyMiddleware} from 'redux';
+import ReduxThunk from 'redux-thunk';
+import {Provider} from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -15,18 +18,24 @@ import App from './pages/App';
 import Create from './pages/Create';
 import Update from './pages/Update';
 import Add from './pages/Add';
+import Reducers from './stores/reducers';
+
+const createStoreApplyMiddleware = applyMiddleware(ReduxThunk)(createStore);
+const store = createStoreApplyMiddleware(Reducers);
 
 function Root() {
     return (
-        <Router>
-            <Navbar/>
-            <Route exact path="/" component={App} />
-            <Route path="/create" component={Create} />
-            <Route path="/update/:id" component={Update} />
-            <Route path="/add/:id" component={Add} />
-            <Footer/>
-            <ToastContainer />
-        </Router>
+        <Provider store={store}>
+            <Router>
+                <Navbar/>
+                    <Route exact path="/" component={App} />
+                    <Route path="/create" component={Create} />
+                    <Route path="/update/:id" component={Update} />
+                    <Route path="/add/:id" component={Add} />
+                <Footer/>
+                <ToastContainer />
+            </Router>
+        </Provider>
     );
 }
 

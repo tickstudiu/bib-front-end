@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import * as action from '../stores/actions';
 
 import { Container, Row, Col } from 'reactstrap';
 
@@ -9,13 +11,13 @@ import Card from '../components/card.component';
 import CardWithImage from '../components/cardWithImage.component';
 import Spinner from '../components/spinner.component';
 
-export default class App extends React.Component {
+class App extends React.Component {
     state = {
         bibs: [],
         loading: true,
     };
 
-    componentDidMount() {
+    componentWillMount() {
         this.getBib();
     }
 
@@ -41,6 +43,7 @@ export default class App extends React.Component {
     };
 
     render(){
+
         return(
             <Container>
                 <header className="text-center">
@@ -86,3 +89,11 @@ I'm Mook. I didn't do much, just encouraged Nice."/>
         )
     }
 }
+
+const mapStateToProps = ({testStore}) => {
+    return {
+        testStore
+    }
+};
+
+export default connect(mapStateToProps, action)(App);
