@@ -13,3 +13,8 @@
 .bg-light-dark{
     background: #eaeaea;
 }
+
+.bg-jumboText{
+    background: url("images/banner.jpg");
+    background-size: cover;
+}
