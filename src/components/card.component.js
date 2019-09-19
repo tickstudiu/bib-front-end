@@ -31,7 +31,7 @@ export default class card extends React.Component{
                         <CardTitle className="text-primary cursor-pointer" onClick={() => this.props.AddRoute(this.props.id)}>{this.props.title}</CardTitle>
                         <div>
                             <small className="text-danger cursor-pointer" onClick={this.toggle}>delete</small>{' '}
-                            <small className="text-secondary cursor-pointer">edit</small>
+                            <small className="text-secondary cursor-pointer" onClick={() => this.props.UpdateRoute(this.props.id)}>edit</small>
                         </div>
                     </div>
                     <h6 className="text-capitalize">Checkpoint: {this.props.checkpoint}</h6>

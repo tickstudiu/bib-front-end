@@ -41,6 +41,10 @@ class App extends React.Component {
         this.props.history.push(`/add/${id}`);
     };
 
+    UpdateRoute = (id) => {
+        this.props.history.push(`/update/${id}`);
+    };
+
     render(){
         return(
             <Container>
@@ -61,7 +65,7 @@ class App extends React.Component {
                                 this.state.bibs.map((bib,index) => (
                                     <Col lg={4} md={6} sm={12} key={index}>
                                         <Card title={bib.title} checkpoint={bib.checkpoint} distance={bib.distance}
-                                              description={bib.description} date={bib.date} id={bib._id} deleteBib={this.deleteBib} AddRoute={this.AddRoute}/>
+                                              description={bib.description} date={bib.date} id={bib._id} deleteBib={this.deleteBib} AddRoute={this.AddRoute} UpdateRoute={this.UpdateRoute}/>
                                     </Col>
                                 ))
                         }
