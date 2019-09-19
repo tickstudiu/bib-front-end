@@ -50,7 +50,10 @@ export default class card extends React.Component{
                         </section>
                         <section>
                             <Button color="secondary" onClick={this.toggle} className="mr-3">Cancel</Button>
-                            <Button color="danger" onClick={() => this.props.deleteBib(this.props.id)}>Delete</Button>
+                            <Button color="danger" onClick={() => {
+                                this.props.deleteBib(this.props.id);
+                                this.toggle();
+                            }}>Delete</Button>
                         </section>
                     </ModalBody>
                 </Modal>

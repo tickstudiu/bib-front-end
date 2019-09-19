@@ -1,11 +1,9 @@
 import React from 'react';
-import axios from 'axios';
-import {connect} from 'react-redux';
-import * as action from '../stores/actions';
+import { connect } from 'react-redux';
+
+import { fetchBib, deleteBib } from '../stores/actions';
 
 import { Container, Row, Col } from 'reactstrap';
-
-import { RootUrl } from "../config";
 
 import Card from '../components/card.component';
 import CardWithImage from '../components/cardWithImage.component';
@@ -17,25 +15,26 @@ class App extends React.Component {
         loading: true,
     };
 
-    componentWillMount() {
-        this.getBib();
+    componentDidMount() {
+        this.props.fetchBib(() => {
+            this.setState({
+                bibs: this.props.bibStore.bibs,
+                loading: false
+            })
+        });
     }
 
-    getBib = () => {
-        axios.get(`${RootUrl}/bibs`)
-            .then(res => {
-                const bibs = res.data;
-                this.setState({ bibs });
-                this.setState({ loading: false });
-            })
-    };
-
     deleteBib = (id) => {
-        axios.delete(`${RootUrl}/bibs/${id}`)
-            .then(res => {
-                console.log(res.data);
-                window.location.reload();
-            })
+        this.props.deleteBib(id, () => {
+            this.setState({loading: false});
+
+            this.props.fetchBib(() => {
+                this.setState({
+                    bibs: this.props.bibStore.bibs,
+                    loading: false
+                })
+            });
+        });
     };
 
     AddRoute = (id) => {
@@ -43,7 +42,6 @@ class App extends React.Component {
     };
 
     render(){
-
         return(
             <Container>
                 <header className="text-center">
@@ -90,10 +88,10 @@ I'm Mook. I didn't do much, just encouraged Nice."/>
     }
 }
 
-const mapStateToProps = ({testStore}) => {
+const mapStateToProps = ({bibStore}) => {
     return {
-        testStore
+        bibStore
     }
 };
 
-export default connect(mapStateToProps, action)(App);
+export default connect(mapStateToProps, { fetchBib, deleteBib })(App);

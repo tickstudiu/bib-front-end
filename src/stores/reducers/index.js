@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
-import testReducer from './testReducer';
+import testReducer from './test.reducer';
+import bibReducer from './bib.reducer';
 
 const rootReducers = combineReducers({
-    testStore:testReducer
+    testStore:testReducer,
+    bibStore:bibReducer
 });
 
 export default  rootReducers;
