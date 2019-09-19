@@ -10,7 +10,6 @@ export default (state = initialState, action) => {
             state.bibsData = action.payload;
             return state;
         case 'create_bib_data':
-            toast.success(action.payload);
             return state;
         case 'fetch_bib_data_error':
             toast.error(action.payload);
