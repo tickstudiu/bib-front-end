@@ -89,7 +89,7 @@ export default class Create extends React.Component {
                     </FormGroup>
                     <Button color="primary" onClick={this.handleSubmit} disabled={this.state.loading}>{this.state.loading ? 'Loading':'Create'}</Button>
                 </Form>
-                <div className="d-lg-block d-none" style={{height: '225px'}}></div>
+                <div className="d-lg-block d-none" style={{height: '225px'}}>{' '}</div>
             </Container>
         )
     }

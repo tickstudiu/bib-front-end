@@ -29,7 +29,10 @@ export default class card extends React.Component{
                 <CardBody>
                     <div className="d-flex justify-content-between">
                         <CardTitle className="text-primary cursor-pointer" onClick={() => this.props.AddRoute(this.props.id)}>{this.props.title}</CardTitle>
-                        <small className="text-danger cursor-pointer" onClick={this.toggle}>delete</small>
+                        <div>
+                            <small className="text-danger cursor-pointer" onClick={this.toggle}>delete</small>{' '}
+                            <small className="text-secondary cursor-pointer">edit</small>
+                        </div>
                     </div>
                     <h6 className="text-capitalize">Checkpoint: {this.props.checkpoint}</h6>
                     <h6 className="text-capitalize">distance: {this.props.distance}</h6>

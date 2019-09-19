@@ -7,6 +7,7 @@ import { RootUrl } from "../config";
 
 import Spinner from '../components/spinner.component';
 import Table from '../components/table.component';
+import Keypad from  '../components/keypad.component';
 
 export default class Add extends React.Component {
 
@@ -78,7 +79,7 @@ export default class Add extends React.Component {
                                     <h1 className="display-4 text-capitalize">{this.state.bib.title}</h1>
                                     <ul className="list-unstyled">
                                         <li><h5>Checkpoint: {this.state.bib.checkpoint}</h5></li>
-                                        <li><h5>Distance{this.state.bib.distance}</h5></li>
+                                        <li><h5>Distance: {this.state.bib.distance}</h5></li>
                                     </ul>
                                 </div>
                         }
@@ -91,43 +92,7 @@ export default class Add extends React.Component {
                                 <Button color="danger" size="sm" onClick={this.clearTag}>Clear</Button>
                             </div>
                         </header>
-                        <section>
-                            <Row>
-                                <Col xs={4}>
-                                    <Button block size="lg" onClick={() => this.handleTag('1')} style={{height: '120px'}} className="mb-3"outline><h1 className="display-4">1</h1></Button>
-                                </Col>
-                                <Col xs={4}>
-                                    <Button block size="lg" onClick={() => this.handleTag('2')} style={{height: '120px'}} className="mb-3"outline><h1 className="display-4">2</h1></Button>
-                                </Col>
-                                <Col xs={4}>
-                                    <Button block size="lg" onClick={() => this.handleTag('3')} style={{height: '120px'}} className="mb-3"outline><h1 className="display-4">3</h1></Button>
-                                </Col>
-                                <Col xs={4}>
-                                    <Button block size="lg" onClick={() => this.handleTag('4')} style={{height: '120px'}} className="mb-3" outline><h1 className="display-4">4</h1></Button>
-                                </Col>
-                                <Col xs={4}>
-                                    <Button block size="lg" onClick={() => this.handleTag('5')} style={{height: '120px'}} className="mb-3" outline><h1 className="display-4">5</h1></Button>
-                                </Col>
-                                <Col xs={4}>
-                                    <Button block size="lg" onClick={() => this.handleTag('6')} style={{height: '120px'}} className="mb-3" outline><h1 className="display-4">6</h1></Button>
-                                </Col>
-                                <Col xs={4}>
-                                    <Button block size="lg" onClick={() => this.handleTag('7')} style={{height: '120px'}} className="mb-3" outline><h1 className="display-4">7</h1></Button>
-                                </Col>
-                                <Col xs={4}>
-                                    <Button block size="lg" onClick={() => this.handleTag('8')} style={{height: '120px'}} className="mb-3" outline><h1 className="display-4">8</h1></Button>
-                                </Col>
-                                <Col xs={4}>
-                                    <Button block size="lg" onClick={() => this.handleTag('9')} style={{height: '120px'}} className="mb-3" outline><h1 className="display-4">9</h1></Button>
-                                </Col>
-                                <Col xs={{size: 4, offset: 4}}>
-                                    <Button block size="lg" onClick={() => this.handleTag('0')} style={{height: '120px'}} className="mb-3" outline><h1 className="display-4">0</h1></Button>
-                                </Col>
-                                <Col xs={4}>
-                                    <Button block size="lg" color="primary" style={{height: '120px'}} className="mb-3" onClick={this.handleSubmit} disabled={this.state.isSending}><h1>{this.state.isSending ? 'w8' : 'X'}</h1></Button>
-                                </Col>
-                            </Row>
-                        </section>
+                        <Keypad handleTag={this.handleTag} handleSubmit={this.handleSubmit} isSending={this.state.isSending}/>
                     </Col>
                 </Row>
             </Container>
