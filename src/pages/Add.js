@@ -44,7 +44,7 @@ class Add extends React.Component {
         this.setState({ isSending: true });
 
         const newBib = {
-            bib_id: this.state.bib.id,
+            bib_id: this.state.bib._id,
             tag: this.state.tag,
         };
 

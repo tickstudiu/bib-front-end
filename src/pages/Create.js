@@ -36,7 +36,6 @@ class Create extends React.Component {
         this.setState({ loading: true });
 
         const newBib = {
-            id: this.state.bibs.length + 1,
             title: this.state.title,
             description: this.state.description,
             distance: this.state.distance,

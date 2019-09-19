@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-import { Container } from 'reactstrap';
+import {Container} from 'reactstrap';
 
-export default class Update extends React.Component {
-
-    render(){
-        return(
+export default class Update extends Component {
+    render() {
+        return (
             <Container>
                 <h5 className="display-4">incoming...</h5>
                 <p className="lead">so sorry Now the developer is developing another part of the system.</p>
