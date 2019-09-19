@@ -2,6 +2,7 @@ import React from 'react';
 import axios from "axios";
 
 import { Container, Row, Col, Button } from 'reactstrap';
+import { toast } from 'react-toastify';
 
 import { RootUrl } from "../config";
 
@@ -60,9 +61,10 @@ export default class Add extends React.Component {
         };
 
         axios.post(`${RootUrl}/bibsData/add`, newBib)
-            .then(() => {
+            .then((res) => {
                 this.setState({ isSending: false });
                 this.clearTag();
+                toast.success(res.data);
             })
     };
 

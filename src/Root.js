@@ -1,10 +1,12 @@
 import React from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 import './assets/style.css';
 import 'moment-timezone';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
 
 import Navbar from './components/navbar.component';
 import Footer from './components/footer.component';
@@ -23,6 +25,7 @@ function Root() {
             <Route path="/update/:id" component={Update} />
             <Route path="/add/:id" component={Add} />
             <Footer/>
+            <ToastContainer />
         </Router>
     );
 }

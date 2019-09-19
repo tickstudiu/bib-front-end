@@ -2,6 +2,7 @@ import React from 'react';
 import axios from "axios";
 
 import { Button, Form, FormGroup, Label, Input, FormText, Container } from 'reactstrap';
+import { toast } from 'react-toastify';
 
 import { RootUrl } from "../config";
 export default class Create extends React.Component {
@@ -48,7 +49,10 @@ export default class Create extends React.Component {
         };
 
         axios.post(`${RootUrl}/bibs/add`, newBib)
-            .then(() => {this.setState({ loading: false });})
+            .then((res) => {
+                this.setState({ loading: false });
+                toast.success(res.data);
+            })
     };
 
     render(){

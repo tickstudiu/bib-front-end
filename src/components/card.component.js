@@ -4,7 +4,7 @@ import WarningImage from '../warning.png';
 
 import {
     Card, CardText, CardBody,
-    CardTitle, Button, Modal, ModalBody, ModalHeader
+    CardTitle, Button, Modal, ModalBody
 } from 'reactstrap';
 
 export default class card extends React.Component{
