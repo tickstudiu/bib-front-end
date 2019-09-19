@@ -1,15 +1,10 @@
 import React from 'react';
-import axios from "axios";
 
 import { connect } from 'react-redux';
 
 import { fetchBibById, fetchBibData, createBibData } from '../stores/actions';
 
 import { Container, Row, Col, Button } from 'reactstrap';
-
-import { toast } from 'react-toastify';
-
-import { RootUrl } from "../config";
 
 import Spinner from '../components/spinner.component';
 import Table from '../components/table.component';
