@@ -1,11 +1,11 @@
 import React from 'react';
-import axios from "axios";
+import { connect } from 'react-redux';
+
+import { fetchBib, createBib } from '../stores/actions';
 
 import { Button, Form, FormGroup, Label, Input, FormText, Container } from 'reactstrap';
-import { toast } from 'react-toastify';
 
-import { RootUrl } from "../config";
-export default class Create extends React.Component {
+class Create extends React.Component {
 
     state = {
         title: '',
@@ -17,23 +17,18 @@ export default class Create extends React.Component {
     };
 
     componentDidMount() {
-        this.getBib();
-    }
-
-    getBib = () => {
-        axios.get(`${RootUrl}/bibs`)
-            .then(res => {
-                const bibs = res.data;
-                this.setState({ bibs });
-                this.setState({ loading: false });
+        this.props.fetchBib(() => {
+            this.setState({
+                bibs: this.props.bibStore.bibs,
+                loading: false
             })
-    };
+        });
+    }
 
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
         });
-        console.log(event.target.value)
     };
 
     handleSubmit = (event) => {
@@ -48,11 +43,9 @@ export default class Create extends React.Component {
             checkpoint: this.state.checkpoint
         };
 
-        axios.post(`${RootUrl}/bibs/add`, newBib)
-            .then((res) => {
-                this.setState({ loading: false });
-                toast.success(res.data);
-            })
+        this.props.createBib(newBib, () => {
+            this.setState({ loading: false });
+        });
     };
 
     render(){
@@ -98,3 +91,11 @@ export default class Create extends React.Component {
         )
     }
 }
+
+const mapStateToProps = ({bibStore}) => {
+    return {
+        bibStore
+    }
+};
+
+export default connect(mapStateToProps, { fetchBib, createBib })(Create);

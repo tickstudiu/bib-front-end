@@ -1,7 +1,12 @@
 import React from 'react';
 import axios from "axios";
 
+import { connect } from 'react-redux';
+
+import { fetchBibById } from '../stores/actions';
+
 import { Container, Row, Col, Button } from 'reactstrap';
+
 import { toast } from 'react-toastify';
 
 import { RootUrl } from "../config";
@@ -10,7 +15,7 @@ import Spinner from '../components/spinner.component';
 import Table from '../components/table.component';
 import Keypad from  '../components/keypad.component';
 
-export default class Add extends React.Component {
+class Add extends React.Component {
 
     state = {
         bib: {},
@@ -21,16 +26,13 @@ export default class Add extends React.Component {
     };
 
     componentDidMount() {
+        this.props.fetchBibById(this.props.match.params.id, () => {
+            this.setState({ bib: this.props.bibStore.bib });
+        });
         this.getBib();
     }
 
     getBib = () => {
-        axios.get(`${RootUrl}/bibs/${this.props.match.params.id}`)
-            .then(res => {
-                const bib = res.data;
-                this.setState({ bib });
-            });
-
         axios.get(`${RootUrl}/bibsData/`)
             .then(res => {
                 const bibsData = res.data;
@@ -101,3 +103,11 @@ export default class Add extends React.Component {
         )
     }
 }
+
+const mapStateToProps = ({bibStore}) => {
+    return {
+        bibStore
+    }
+};
+
+export default connect(mapStateToProps, { fetchBibById })(Add);
