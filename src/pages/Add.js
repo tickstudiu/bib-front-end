@@ -3,7 +3,7 @@ import axios from "axios";
 
 import { connect } from 'react-redux';
 
-import { fetchBibById } from '../stores/actions';
+import { fetchBibById, fetchBibData, createBibData } from '../stores/actions';
 
 import { Container, Row, Col, Button } from 'reactstrap';
 
@@ -29,28 +29,19 @@ class Add extends React.Component {
         this.props.fetchBibById(this.props.match.params.id, () => {
             this.setState({ bib: this.props.bibStore.bib });
         });
-        this.getBib();
+
+        this.props.fetchBibData(() => {
+            this.setState({ bibsData: this.props.bibDataStore.bibsData })
+        });
+        this.setState({ isLoading: false });
     }
 
-    getBib = () => {
-        axios.get(`${RootUrl}/bibsData/`)
-            .then(res => {
-                const bibsData = res.data;
-                this.setState({ bibsData });
-                this.setState({ isLoading: false });
-            });
-    };
-
     handleTag = (newNum) => {
-        this.setState({
-            tag: this.state.tag + newNum
-        });
+        this.setState({ tag: this.state.tag + newNum });
     };
 
     clearTag = () => {
-        this.setState({
-            tag: ''
-        })
+        this.setState({ tag: '' })
     };
 
     handleSubmit = (event) => {
@@ -62,12 +53,14 @@ class Add extends React.Component {
             tag: this.state.tag,
         };
 
-        axios.post(`${RootUrl}/bibsData/add`, newBib)
-            .then((res) => {
-                this.setState({ isSending: false });
-                this.clearTag();
-                toast.success(res.data);
-            })
+        this.props.createBibData(newBib, () => {
+            this.setState({ isSending: false });
+            this.clearTag();
+
+            this.props.fetchBibData(() => {
+                this.setState({ bibsData: this.props.bibDataStore.bibsData })
+            });
+        });
     };
 
     render(){
@@ -104,10 +97,10 @@ class Add extends React.Component {
     }
 }
 
-const mapStateToProps = ({bibStore}) => {
+const mapStateToProps = ({bibStore, bibDataStore}) => {
     return {
-        bibStore
+        bibStore, bibDataStore
     }
 };
 
-export default connect(mapStateToProps, { fetchBibById })(Add);
+export default connect(mapStateToProps, { fetchBibById, fetchBibData, createBibData })(Add);

@@ -1,4 +1,5 @@
 export * from './bib.action';
+export * from './bibData.action';
 
 export const actionTest = () => dispatch => {
     dispatch({
