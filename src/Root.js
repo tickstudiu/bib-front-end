@@ -18,6 +18,9 @@ import App from './pages/App';
 import Create from './pages/Create';
 import Update from './pages/Update';
 import Add from './pages/Add';
+import Bib from './pages/Bib';
+import About from './pages/About';
+
 import Reducers from './stores/reducers';
 
 const createStoreApplyMiddleware = applyMiddleware(ReduxThunk)(createStore);
@@ -32,6 +35,8 @@ function Root() {
                     <Route path="/create" component={Create} />
                     <Route path="/update/:id" component={Update} />
                     <Route path="/add/:id" component={Add} />
+                    <Route path="/bib" component={Bib} />
+                    <Route path="/about" component={About} />
                 <Footer/>
                 <ToastContainer />
             </Router>

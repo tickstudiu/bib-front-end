@@ -1,5 +1,7 @@
 import React from 'react';
 import Moment from 'react-moment';
+import ReactStars from 'react-stars'
+
 import WarningImage from '../assets/images/warning.png';
 
 import {
@@ -37,10 +39,12 @@ export default class card extends React.Component{
                     <h6 className="text-capitalize">Checkpoint: {this.props.checkpoint}</h6>
                     <h6 className="text-capitalize">distance: {this.props.distance}</h6>
                     <CardText>{this.props.description}</CardText>
-                    <CardText>
+                    <CardText className="d-flex justify-content-between align-items-center">
                         <small className="text-muted"> <Moment fromNow>{this.props.date}</Moment></small>
+                        <ReactStars count={1} value={0} size={24} color2={'#ffd700'} half={false}/>
                     </CardText>
                 </CardBody>
+
                 <Modal isOpen={this.state.modal} toggle={this.toggle} centered>
                     <ModalBody className="text-center">
                         <section className="mb-4">
