@@ -9,9 +9,15 @@ export default (state = initialState, action) => {
         case 'fetch_bib_data':
             state.bibsData = action.payload;
             return state;
+        case 'delete_bib_data':
+            toast.success(action.payload);
+            return state;
         case 'create_bib_data':
             return state;
         case 'fetch_bib_data_error':
+            toast.error(action.payload);
+            return state;
+        case 'delete_bib_data_error':
             toast.error(action.payload);
             return state;
         case 'create_bib_data_error':

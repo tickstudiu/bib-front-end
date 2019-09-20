@@ -2,7 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-import { fetchBibById, fetchBibData, createBibData } from '../stores/actions';
+import { fetchBibById, fetchBibData, createBibData, deleteBibData } from '../stores/actions';
 
 import { Container, Row, Col, Button } from 'reactstrap';
 
@@ -58,6 +58,18 @@ class Add extends React.Component {
         });
     };
 
+    handleDelete = (id) => {
+        this.props.deleteBibData(id, () => {
+            this.props.fetchBibData(() => {
+                this.setState({ bibsData: this.props.bibDataStore.bibsData })
+            });
+        })
+    };
+
+    UpdateRoute = (id) => {
+        this.props.history.push(`/update/${id}`);
+    };
+
     render(){
         return(
             <Container>
@@ -75,7 +87,7 @@ class Add extends React.Component {
                                     </ul>
                                 </div>
                         }
-                        <Table bibsData={this.state.bibsData} id={this.state.bib._id}/>
+                        <Table bibsData={this.state.bibsData} id={this.state.bib._id} handleDelete={this.handleDelete} UpdateRoute={this.UpdateRoute}/>
                     </Col>
                     <Col lg={6} md={12}>
                         <header className="d-flex justify-content-between align-items-center">
@@ -98,4 +110,4 @@ const mapStateToProps = ({bibStore, bibDataStore}) => {
     }
 };
 
-export default connect(mapStateToProps, { fetchBibById, fetchBibData, createBibData })(Add);
+export default connect(mapStateToProps, { fetchBibById, fetchBibData, createBibData, deleteBibData })(Add);

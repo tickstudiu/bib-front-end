@@ -18,6 +18,22 @@ export const fetchBibData = (callback) => async dispatch => {
     }
 };
 
+export const deleteBibData = (id, callback) => async dispatch => {
+    const res = await service.deleteApi(`${RootUrl}/bibsData/${id}`);
+    if (res.success) {
+        await dispatch({
+            type: 'delete_bib_data',
+            payload: res.data
+        });
+        await callback();
+    } else {
+        await dispatch({
+            type: 'delete_bib_data_error',
+            payload: res.error,
+        });
+    }
+};
+
 export const createBibData = (data, callback) => async dispatch => {
     const res = await service.postApi(`${RootUrl}/bibsData/add`, data);
     if (res.success) {
