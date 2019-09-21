@@ -1,6 +1,5 @@
 import React from 'react';
 import Moment from 'react-moment';
-import ReactStars from 'react-stars'
 
 import WarningImage from '../assets/images/warning.png';
 
@@ -8,6 +7,7 @@ import {
     Card, CardText, CardBody,
     CardTitle, Button, Modal, ModalBody
 } from 'reactstrap';
+import ReactStars from 'react-stars';
 
 export default class card extends React.Component{
     constructor(props) {

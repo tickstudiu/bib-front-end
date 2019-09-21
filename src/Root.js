@@ -20,6 +20,7 @@ import Update from './pages/Update';
 import Add from './pages/Add';
 import Bib from './pages/Bib';
 import About from './pages/About';
+import Contact from './pages/Contact';
 
 import Reducers from './stores/reducers';
 
@@ -37,6 +38,7 @@ function Root() {
                     <Route path="/add/:id" component={Add} />
                     <Route path="/bib" component={Bib} />
                     <Route path="/about" component={About} />
+                    <Route path="/contact" component={Contact} />
                 <Footer/>
                 <ToastContainer />
             </Router>
