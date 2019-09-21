@@ -4,8 +4,8 @@ import { Jumbotron, Container } from 'reactstrap';
 class JumboText extends Component {
     render() {
         return (
-            <div className="bg-jumboText text-white">
-                <Jumbotron style={{background: 'rgba(0,0,0,0.2)', padding: '8rem 0'}}>
+            <div className="bg-jumboText text-white text-center">
+                <Jumbotron style={{background: 'rgba(0,0,0,0.2)', padding: '8rem 0'}} className="mb-0">
                     <Container>
                         <h1 className="display-4 text-uppercase">Develop for the event</h1>
                         <hr className="my-2"/>

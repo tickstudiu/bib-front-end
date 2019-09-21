@@ -32,8 +32,7 @@ export default class Example extends React.Component {
                 <Navbar light expand="lg" style={{padding: '1.25rem 0'}} className="bg-white">
                     <Container>
                         <NavbarBrand href="/">
-                            <img src="../logo.png" alt="logo" width="30px" height="30px" className="mr-2"/>
-                            BiB
+                            Wanlerm.xyz
                         </NavbarBrand>
                         <NavbarToggler onClick={this.toggle} />
                         <Collapse isOpen={this.state.isOpen} navbar>
